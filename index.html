@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#f7f6f2">
-    <meta name="description" content="The personal website of Lisa Adang.">
-    <title>Lisa Adang — Personal Website</title>
+    <meta name="description" content="Lisa Adang helps ambitious creative teams focus on what matters most.">
+    <title>Lisa Adang — Creative Operations &amp; Strategy</title>
     <style>
       :root {
         color-scheme: light;
@@ -16,6 +16,7 @@
         text-rendering: optimizeLegibility;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
       }
 
       * {
@@ -24,10 +25,7 @@
 
       body {
         min-width: 320px;
-        min-height: 100vh;
         margin: 0;
-        display: grid;
-        grid-template-rows: auto 1fr auto;
       }
 
       a {
@@ -35,6 +33,7 @@
       }
 
       .site-header,
+      main,
       .site-footer {
         width: min(100% - 3rem, 1120px);
         margin-inline: auto;
@@ -54,60 +53,135 @@
         text-decoration: none;
       }
 
-      .header-link,
+      .site-nav {
+        display: flex;
+        gap: 1.75rem;
+      }
+
+      .site-nav a,
       .text-link {
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         text-decoration-thickness: 1px;
         text-underline-offset: 0.25em;
       }
 
+      .site-nav a {
+        text-decoration: none;
+      }
+
       main {
-        width: min(100% - 3rem, 1120px);
-        margin-inline: auto;
-        display: flex;
-        align-items: center;
-        padding-block: 5rem;
+        padding-block: 4rem 7rem;
       }
 
-      .intro {
-        max-width: 760px;
+      section + section {
+        margin-top: 8rem;
       }
 
-      .eyebrow {
-        margin: 0 0 1.5rem;
+      .hero {
+        max-width: 900px;
+        padding-block: 2rem 1rem;
+      }
+
+      .section-tag {
+        display: block;
+        margin-bottom: 1.5rem;
         color: #63736a;
         font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.16em;
+        line-height: 1.4;
         text-transform: uppercase;
       }
 
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
       h1 {
-        max-width: 700px;
-        margin: 0;
-        font-size: clamp(3.5rem, 10vw, 7.5rem);
+        max-width: 850px;
+        margin-bottom: 2rem;
+        font-size: clamp(3rem, 8vw, 6.75rem);
         font-weight: 600;
         letter-spacing: -0.075em;
         line-height: 0.98;
       }
 
-      .description {
-        max-width: 520px;
-        margin: 2rem 0 0;
-        color: #59615e;
-        font-size: clamp(1.05rem, 2vw, 1.25rem);
-        line-height: 1.7;
-      }
-
-      .links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .text-link {
+      h2 {
+        max-width: 800px;
+        margin-bottom: 3rem;
+        font-size: clamp(2.25rem, 5vw, 4rem);
         font-weight: 600;
+        letter-spacing: -0.06em;
+        line-height: 1.05;
+      }
+
+      h2 .section-tag {
+        margin-bottom: 1rem;
+      }
+
+      h3 {
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+        font-weight: 600;
+        letter-spacing: -0.035em;
+        line-height: 1.25;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+        color: #59615e;
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        line-height: 1.75;
+      }
+
+      .hero-copy p:last-child,
+      .belief p:last-child,
+      .about-copy p:last-child {
+        margin-bottom: 0;
+      }
+
+      .role-line {
+        margin-top: 1.75rem;
+        color: #242a29;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .beliefs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 3.5rem 4rem;
+      }
+
+      .belief {
+        padding-top: 1.5rem;
+        border-top: 1px solid #d8d9d2;
+      }
+
+      .belief p,
+      .about-copy p {
+        color: #59615e;
+        line-height: 1.75;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: minmax(200px, 0.7fr) minmax(0, 1.3fr);
+        gap: 4rem;
+        align-items: start;
+      }
+
+      .about h2 {
+        position: sticky;
+        top: 2rem;
+        margin-bottom: 0;
+      }
+
+      .about-copy p + p {
+        margin-top: 1.5rem;
       }
 
       .site-footer {
@@ -129,15 +203,39 @@
         outline-offset: 4px;
       }
 
+      @media (max-width: 700px) {
+        main {
+          padding-block: 2.5rem 5rem;
+        }
+
+        section + section {
+          margin-top: 5.5rem;
+        }
+
+        .beliefs,
+        .about {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .about h2 {
+          position: static;
+        }
+      }
+
       @media (max-width: 480px) {
         .site-header,
-        .site-footer,
-        main {
+        main,
+        .site-footer {
           width: min(100% - 2rem, 1120px);
         }
 
-        main {
-          padding-block: 3.5rem;
+        .site-nav {
+          gap: 1rem;
+        }
+
+        .site-nav a {
+          font-size: 0.8rem;
         }
 
         .site-footer {
@@ -148,24 +246,79 @@
   </head>
   <body>
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Lisa Adang home">Lisa Adang</a>
-      <a class="header-link" href="https://github.com/lisaadang">GitHub</a>
+      <a class="wordmark" href="#home" aria-label="Lisa Adang home">Lisa Adang</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#beliefs">Beliefs</a>
+        <a href="#about">About</a>
+      </nav>
     </header>
-    <main>
-      <section class="intro" aria-labelledby="intro-title">
-        <p class="eyebrow">Personal website</p>
-        <h1 id="intro-title">Hello, I’m Lisa.</h1>
-        <p class="description">
-          Welcome to my corner of the internet. This is a place to share a little about me and what I’m working on.
-        </p>
-        <div class="links">
-          <a class="text-link" href="https://github.com/lisaadang">Find me on GitHub ↗</a>
+    <main id="home">
+      <section class="hero" aria-labelledby="intro-title">
+        <h1 id="intro-title"><span class="section-tag">01 / What I do</span>I help ambitious creative teams focus on what matters most.</h1>
+        <div class="hero-copy">
+          <p>
+            I work with design and marketing leaders to figure out what deserves the team’s attention, then help turn that into something the organization can actually do. That can mean shaping a major program, resetting priorities, changing how the team works, or building a system so we don’t have to solve the same problem again next month.
+          </p>
+          <p>
+            Leaders trust me to bring a clear read on the team, make sense of competing signals, and help turn direction into decisions. Creatives trust me to follow through, protect their time, and keep the machinery around the work from becoming the work itself.
+          </p>
+          <p class="role-line">
+            Currently Senior Program Manager, Design Operations at GitHub, previously Co-founder &amp; Partner at O/M and Digital Program Manager at Cooper Hewitt, Smithsonian Design Museum.
+          </p>
+        </div>
+      </section>
+
+      <section id="beliefs" aria-labelledby="beliefs-title">
+        <h2 id="beliefs-title"><span class="section-tag">02 / Principles</span>A few things I believe</h2>
+        <div class="beliefs">
+          <article class="belief">
+            <h3>A creative team’s scarcest resource is its attention.</h3>
+            <p>
+              There will always be more work than there is team. The job is to figure out what deserves bespoke attention, what should become a system, and what we can stop doing altogether.
+            </p>
+          </article>
+          <article class="belief">
+            <h3>The best way to scale a team is not to ask it to make more things.</h3>
+            <p>
+              I’m much more interested in making a good decision reusable. Systems, tools, standards, and enablement let a team’s thinking travel much further than the team itself.
+            </p>
+          </article>
+          <article class="belief">
+            <h3>Good process should solve a problem you can name.</h3>
+            <p>
+              I like just enough process. Enough that people know what we’re doing, who is doing it, and how a decision gets made. Once the upkeep starts becoming its own body of work, I get suspicious.
+            </p>
+          </article>
+          <article class="belief">
+            <h3>Taste makes operations better.</h3>
+            <p>
+              Good taste helps me make better calls about priorities, resources, and where the team should spend its attention. It also helps me see what needs protecting as work moves through an organization, so the idea that made it good in the first place is still there at the end.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="about" aria-labelledby="about-title">
+        <h2 id="about-title"><span class="section-tag">03 / Background</span>About</h2>
+        <div class="about-copy">
+          <p>
+            I started out in museums, including the Library of Congress, Brooklyn Museum, and Cooper Hewitt, Smithsonian Design Museum. This was when museums were rapidly figuring out what digital meant for collections, exhibitions, and the visitor experience. I worked on the technology, but I got just as interested in all the new ways of working it required.
+          </p>
+          <p>
+            From there I went to O/M, a product design agency, where I eventually became a co-founder and partner. I ran projects, clients, operations, and a team of PMs. Running an agency made the relationship between operations and creative quality pretty hard to miss.
+          </p>
+          <p>
+            Today I bring that perspective to large brand and marketing organizations. I’m part operator, part advisor, and usually the calm person in the room when priorities compete, the path gets messy, or everyone has a slightly different version of what “urgent” means.
+          </p>
+          <p>
+            Outside work, I’m active in historic preservation and modern architecture circles. I live in Philadelphia, where the layers of architectural history—and a particularly good modernist legacy—give me plenty to study, argue about, and appreciate.
+          </p>
         </div>
       </section>
     </main>
     <footer class="site-footer">
       <p>© <span id="year">2026</span> Lisa Adang</p>
-      <p>Made with care.</p>
+      <a class="text-link" href="https://github.com/lisaadang">GitHub</a>
     </footer>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
